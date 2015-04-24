@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  remote_user: root
+  
+  tasks:
+   - name : Installing lab pre-requisites
+     apt  : name={{ item }} state=present
+     with_items:
+      - apache2
+      - php5
+     environment:
+       http_proxy: http://proxy.iiit.ac.in:8080
+       https_proxy: http://proxy.iiit.ac.in:8080
+   
+   - name : Restart services
+     shell : service {{ item }} restart
+     with_items :
+      - apache2
+
+   - name : Running make file
+     shell : make -C /root/labs/computer-programming-iiith/src
+
+   - name : copying build contents to /var/www/
+     shell : cp -r /root/labs/computer-programming-iiith/build/* /var/www/
+  

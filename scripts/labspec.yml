@@ -21,13 +21,13 @@
       - apache2
 
    - name : Running make file
-     shell : make -C /root/labs/computer-programming-iiith/src
+     shell : make -C /root/labs/computer-programming-iiith-ansible/src
    
    - name : Making index.html as default page
      shell : mv /var/www/index.html index.html.default 
 
    - name : copying build contents to /var/www/
-     shell : cp -r /root/labs/computer-programming-iiith/build/* /var/www/
+     shell : cp -r /root/labs/computer-programming-iiith-ansible/build/* /var/www/
      
   
   

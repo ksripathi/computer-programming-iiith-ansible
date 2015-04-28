@@ -11,10 +11,7 @@
      with_items:
       - apache2
       - php5
-     environment:
-       http_proxy: http://proxy.iiit.ac.in:8080
-       https_proxy: http://proxy.iiit.ac.in:8080
-   
+     
    - name : Restart services
      shell : service {{ item }} restart
      with_items :
